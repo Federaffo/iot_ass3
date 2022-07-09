@@ -6,19 +6,28 @@ bool Led::isOn(){
 }
 
 void Led::init(){
-    pinMode(this->pin,OUTPUT);
+    if(pin==null){
+        pinMode(this->analPing,OUTPUT);
+    }else{
+        pinMode(this->pin,OUTPUT);
+    }
 }
 
 void Led::turnOff(){
-    if(state==ON){
+    if(state!=OFF){
         state=OFF;
-        digitalWrite(pin,LOW);
-    }
+        analogWrite(pin, LOW);
+    } 
 }
 
 void Led::turnOn(){
-    if(state==OFF){
+    if(state!=ON){
         state=ON;
-        digitalWrite(pin,HIGH);
+        analogWrite(pin, HIGH);
     }
+}
+
+void Led::dimmerLed(int i){
+    analogWrite(pin,i);
+    state=DIMMER;
 }

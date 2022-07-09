@@ -1,0 +1,46 @@
+#ifndef __MAINSYSTEM_TASK__
+#define __MAINSYSTEM_TASK__
+
+#include "Task.h"
+#include "Led.h"
+#include "StepMotor.h"
+#include "GlobalVar.h"
+
+class MainSystemTask : public Task{
+    public:
+        MainSystemTask(Led* L1, Led* L2, Led* L3, Led* L4,StepMotor* motor){
+            this->L1=L1;
+            this->L2=L2;
+            this->L3=L3;
+            this->L4=L4;
+            this->motor=motor;
+        }
+
+        void tick();
+    
+    private:
+        GlobalState globalState;
+        bool l1;
+        bool l2;
+        int l3;
+        int l4;
+        bool irrigation;
+        int irrSpeed;
+        int state;
+
+        Led* L1;
+        Led* L2;
+        Led* L3;
+        Led* L4;
+        StepMotor* motor;
+
+
+        void doingStuff();
+        void ManualMethod();
+        void AlarmMethod();
+
+        
+
+};
+
+#endif
