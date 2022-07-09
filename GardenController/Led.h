@@ -1,7 +1,7 @@
 #ifndef __LED__
 #define __LED__
 
-
+#include "string.h"
 
 class Led{
     public:
@@ -9,14 +9,20 @@ class Led{
             this->pin=pin;
             state=OFF;
         }
+        Led(String pin){
+            this.analPin;
+            state=OFF;
+        }
         bool isOn();
         void init();
         void turnOn();
         void turnOff();
+        void dimmerLed(int i);
     
     private:
         int pin;
-        enum {OFF,ON} state;
+        String analPin;
+        enum {OFF, ON, DIMMER} state;
 };
 
 #endif
