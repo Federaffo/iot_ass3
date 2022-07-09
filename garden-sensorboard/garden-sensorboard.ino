@@ -8,7 +8,7 @@
 #include "potentiometer.h"
 #include "config.h"
 
-
+#include <ArduinoJson.h>
 
 
 
@@ -34,13 +34,44 @@ void setup() {
 
 void loop() {  // wait for WiFi connection
 
+  
+  p->sync();
+  int temp = p->getValue();
+  
+  l1->turnOn();
+  if(WiFi.status()== WL_CONNECTED){
 
-p->sync();
-int temp = p->getValue();
+     while (!Serial.available());
+     String  x = Serial.readStringUntil('-');
+    
+    StaticJsonDocument<200> doc;
+    String j = "{ \"l1\": False, \"l2\": False, \"l3\": 0, \"l4\": 0, \"irrigation\": False, \"state\": 0 }";
+    x.replace("\\","");
+    deserializeJson(doc, x);
+    String altLink = "http://192.168.76.204:80/sensorState?";
+    
+    String a = doc["state"];
+    String b = doc["l3"];
+    altLink.concat(x);
+    altLink.concat(a);
+    altLink.concat(b);
+    altLink.concat(j);
+    altLink.concat(doc.isNull());
 
-l1->turnOn();
-if(WiFi.status()== WL_CONNECTED){
 
+    
+    WiFiClient client;
+
+    HTTPClient http;
+    http.begin(client, altLink);
+    int httpCode = http.GET();
+    if (httpCode == 200){
+      String response = http.getString();
+      Serial.println(response);
+    }
+  
+    
+    /*
     String altLink = "http://192.168.1.6:80/sensorState?";
     altLink.concat("tmp=");
     altLink.concat(temp);
@@ -64,8 +95,9 @@ if(WiFi.status()== WL_CONNECTED){
         l1->turnOn();
       }
     }
+
+    */
     
     http.end();
-    delay(5000);
   }
 }

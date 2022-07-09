@@ -1,31 +1,122 @@
+#%%
 import json
+from mimetypes import init
+from this import d
+from tkinter.tix import Tree
 from flask import Flask
 from flask import request
 from enum import Enum
+from numpy import tri, true_divide
+import serial
+from datetime import date, datetime,timedelta
+import time, threading
+
 
 class State(Enum):
-    AUTO = "AUTO"
-    MANUAL = "MANUAL"
-    ALARM = "ALARM"
+    AUTO = 0
+    MANUAL = 1
+    ALARM = 2
     
 state = State.AUTO
 app = Flask(__name__)
-  
+
+ir_X = 10
+ir_Y = 10
+
+lastStart = datetime.now() - timedelta(days=1)
+
+class sender():
+    ser = serial.Serial() 
+    def __init__(self, rate, port) -> None:        
+        self.ser.baudrate = rate 
+        self.ser.port = port
+
+    def send(self,msg):
+        self.ser.open()
+        print("sending")
+        a = str(msg) + "-"  
+        a = a.lower()
+        self.ser.write(str.encode(a))
+        self.ser.close()  
+        
+
+class myGarden():
+    def __init__(self) -> None:
+        self.dict = {'l1':False,'l2':False,'l3':0,'l4':0,'i':False,'state':0}
+        self.canIrr = True
+
+    def setIrr(self, ir):
+        self.dict["i"] = ir
+
+    def setAllOff(self):
+        self.setLedOff()
+        self.dict["i"] = False
+
+    def setLedOff(self):
+        self.dict["l1"] = False
+        self.dict["l2"] = False
+        self.dict["l3"] = 0
+        self.dict["l4"] = 0
+
+    def stopIrr(self):
+        self.setIrr(False)
+        self.canIrr = False
+        threading.Timer(ir_X, self.nowCanIrr).start()
+
+    def nowCanIrr(self):
+        self.canIrr = True
+
+    def startIrr(self):
+        self.setIrr(True)
+        threading.Timer(ir_X, self.stopIrr).start()
+
+    def sync(self,temp,lux):
+        global state
+
+
+        if state == State.AUTO:
+            if(temp == 5):
+                self.setAllOff()
+                state = State.ALARM
+                self.dict["state"] = State.ALARM.value
+                return
+
+            if lux < 2 and self.dict["i"] == False and self.canIrr:
+                self.startIrr()
+
+
+            if lux < 5 :
+                self.dict["l1"] = True
+                self.dict["l2"] = True
+                self.dict["l3"] = 5-lux
+                self.dict["l4"] = 5-lux
+            else:
+                self.setLedOff()
+
+    def getGarden(self):
+        return self.dict
+
+
+
+garden = myGarden()
+s = sender(9600, "COM3")
 
 def getStateDict():
     return {"state":state.value}
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, Worldioooooooo!</p>"
+
+    return "OK"
 
 
 @app.route("/sensorState")
 def sendState():
-    tmp = request.args.get('tmp')
-    lux = request.args.get('lum')
-    useValue(lux, tmp)
-    return state.value
+    tmp =int(request.args.get('tmp'))
+    lux = int(request.args.get('lum'))
+    garden.sync(tmp,lux)
+    #useValue(lux, tmp)
+    return json.dumps(garden.getGarden(), indent=4)
 
 
 @app.route("/resetAlarm")
@@ -33,14 +124,16 @@ def reset():
     global state
     state = State.AUTO
     return "reset"
+    
+@app.route("/send")
+def send():
+    s.send(garden.getGarden())
+    #s.send("ciao")
 
-
-def useValue(lux, temp):
-    global state
-    if(temp == "5"):
-        state = State.ALARM
-        sendAlarmMessage()
-
-
+    return "OK"
+    
 def sendAlarmMessage():
     print("ALLARMEEEEEE ROSSOOOO")
+
+
+# %%
