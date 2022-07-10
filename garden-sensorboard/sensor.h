@@ -1,13 +1,14 @@
-#ifndef __POTENTIOMETER__
-#define __POTENTIOMETER__
+#ifndef __SENSOR__
+#define __SENSOR__
 
-class Potentiometer
+class Sensor
 {
 public:
-    Potentiometer();
+    Sensor();
     int getValue();
     void sync();
     void init();
+    int getMappedValue(int a,int b);
 
 private:
     int pin;
