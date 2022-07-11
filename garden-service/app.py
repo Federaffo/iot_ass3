@@ -26,18 +26,20 @@ ir_Y = 10
 lastStart = datetime.now() - timedelta(days=1)
 
 class sender():
-    ser = serial.Serial() 
     def __init__(self, rate, port) -> None:        
+        self.ser = serial.Serial() 
         self.ser.baudrate = rate 
         self.ser.port = port
+        self.ser.open()
+
 
     def send(self,msg):
-        self.ser.open()
+        #self.ser.open()
         print("sending")
         a = str(msg) + "-"  
         a = a.lower()
         self.ser.write(str.encode(a))
-        self.ser.close()  
+        #self.ser.close()  
         
 
 class myGarden():
@@ -99,7 +101,7 @@ class myGarden():
 
 
 garden = myGarden()
-s = sender(9600, "COM5")
+s = sender(9600, "COM4")
 
 def getStateDict():
     return {"state":state.value}
