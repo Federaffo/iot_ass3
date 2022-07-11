@@ -23,13 +23,6 @@ class MainSystemTask : public Task{
         void tick();
     
     private:
-        bool l1;
-        bool l2;
-        int l3;
-        int l4;
-        bool irrigation;
-        int irrSpeed;
-        int state;
 
         Led* L1;
         Led* L2;

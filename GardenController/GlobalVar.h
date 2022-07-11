@@ -3,7 +3,7 @@
 
 #include "string.h"
 
-#define PINLED1 2
+#define PINLED1 1
 #define PINLED2 3
 #define PINLED3 4
 #define PINLED4 5
@@ -23,6 +23,7 @@ extern bool l2;
 extern int l3;
 extern int l4;
 extern bool irrigation;
-extern int irrSpeed;
+extern String jsonPY;
+
 
 #endif

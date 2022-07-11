@@ -99,7 +99,7 @@ class myGarden():
 
 
 garden = myGarden()
-s = sender(9600, "COM3")
+s = sender(9600, "COM5")
 
 def getStateDict():
     return {"state":state.value}
@@ -128,7 +128,7 @@ def reset():
 @app.route("/send")
 def send():
     s.send(garden.getGarden())
-    #s.send("ciao")
+    s.send("ciao")
 
     return "OK"
     

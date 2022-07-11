@@ -18,19 +18,15 @@ class BluetoothTask : public Task{
             Task::init(period);
         }
         void tick();
+        
     
     private:
         SoftwareSerial* BTSerial;
         StaticJsonDocument<200> doc;
-        bool l1;
-        bool l2;
-        int l3;
-        int l4;
-        bool irrigation;
-        int irrSpeed;
-        int state;
+        StaticJsonDocument<200> ses;
 
         void BTread();
+        void BTwrite();
 };
 
 #endif

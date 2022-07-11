@@ -15,7 +15,13 @@ Led* L4= new Led(PINLED4);
 StepMotor* motor = new StepMotor(PINMOTOR);
 
 Scheduler sched;
-GlobalState globalState=MANUAL;
+GlobalState globalState=AUTO;
+bool l1;
+bool l2;
+int l3;
+int l4;
+bool irrigation;
+String jsonPY;
 
 void setup() {
   L1->init();
@@ -23,11 +29,12 @@ void setup() {
   L3->init();
   L4->init();
   sched.init(50);
-
+  pinMode(7,OUTPUT);
   Serial.begin(9600);
+  
 
-  Task* t0 = new MainSystemTask(L1,L2,L3,L4,motor);
-  sched.addTask(t0);
+  /*Task* t0 = new MainSystemTask(L1,L2,L3,L4,motor);
+  sched.addTask(t0);*/
 
   Task* t2= new BluetoothTask(PIN_BT_RX, PIN_BT_TX);
   sched.addTask(t2);

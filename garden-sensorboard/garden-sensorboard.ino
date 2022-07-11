@@ -1,11 +1,11 @@
 
 
-#include <ESP8266WiFi.h>
+#include <ESP32WiFi.h>
 //#include <ESP8266WiFiMulti.h>
-#include <ESP8266HTTPClient.h>
+#include <ESP32HTTPClient.h>
 //#include <ArduinoHttpClient.h>
 #include "Led.h"
-#include "potentiometer.h"
+#include "sensor.h"
 #include "config.h"
 
 #include <ArduinoJson.h>
@@ -15,7 +15,7 @@
 const char* ssid     = STASSID;
 const char* password = STAPSK;
 
-Potentiometer* p = new Potentiometer();
+Sensor* p = new Sensor();
 Led* l1 = new Led(2);
 
 void setup() {
@@ -48,7 +48,7 @@ void loop() {  // wait for WiFi connection
     String j = "{ \"l1\": False, \"l2\": False, \"l3\": 0, \"l4\": 0, \"irrigation\": False, \"state\": 0 }";
     x.replace("\\","");
     deserializeJson(doc, x);
-    String altLink = "http://192.168.76.204:80/sensorState?";
+    String altLink = "http://192.168.1.106:80/sensorState?";
     
     String a = doc["state"];
     String b = doc["l3"];

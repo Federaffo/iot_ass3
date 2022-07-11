@@ -20,13 +20,6 @@ class SerialCommTask : public Task{
     
     private:
         StaticJsonDocument<200> doc;
-        bool l1;
-        bool l2;
-        int l3;
-        int l4;
-        bool irrigation;
-        int irrSpeed;
-        int state;
 
         void ReadData();
 };
