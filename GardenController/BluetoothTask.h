@@ -9,18 +9,18 @@
 
 class BluetoothTask : public Task{
     public:
-        BluetoothTask(int rx, int tx){
-            BTserial= SoftwareSerial(rx,tx);
-            pinMode(rx,INPUT);
-            pinMode(tx,OUTPUT);
-            BTserial.begin(9600);
+        BluetoothTask(int rx,int tx){
+          BTSerial= new SoftwareSerial(rx,tx);
+          BTSerial->begin(19200);
+          init(200);
         }   
-
+        void init(long period){
+            Task::init(period);
+        }
         void tick();
     
     private:
-        SoftwareSerial BTserial;
-        GlobalState globalState;
+        SoftwareSerial* BTSerial;
         StaticJsonDocument<200> doc;
         bool l1;
         bool l2;
@@ -31,6 +31,6 @@ class BluetoothTask : public Task{
         int state;
 
         void BTread();
-}
+};
 
 #endif

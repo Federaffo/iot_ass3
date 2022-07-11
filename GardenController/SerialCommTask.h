@@ -3,21 +3,22 @@
 
 #include "Task.h"
 #include "Arduino.h"
-#include "wire.h"
 #include "GlobalVar.h"
 #include "string.h"
 #include "ArduinoJson.h"
 
-class SerialComm : public Task{
+class SerialCommTask : public Task{
     public:
-        SerialComm(){
-            Serial.begin(9600);
+        SerialCommTask(){
+          init(200);
+        }
+        void init(long period){
+            Task::init(period);
         }
 
         void tick();
     
     private:
-        GlobalState globalState;
         StaticJsonDocument<200> doc;
         bool l1;
         bool l2;
@@ -28,6 +29,6 @@ class SerialComm : public Task{
         int state;
 
         void ReadData();
-}
+};
 
 #endif

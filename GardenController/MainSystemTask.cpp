@@ -24,11 +24,10 @@ void MainSystemTask::doingStuff(){
     if(l2){L2->turnOn();}else{L2->turnOff();}
     L3->dimmerLed(4-l3);
     L4->dimmerLed(4-l4);
-    if(irrigation){motor.keepRotate(irrSpeed);}
+    if(irrigation){motor->keepRotate(irrSpeed);}
 
 }
 
 void MainSystemTask::AlarmMethod(){
 
 }
-

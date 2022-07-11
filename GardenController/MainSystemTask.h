@@ -14,12 +14,15 @@ class MainSystemTask : public Task{
             this->L3=L3;
             this->L4=L4;
             this->motor=motor;
+            init(200);
+        }
+        void init(long period){
+            Task::init(period);
         }
 
         void tick();
     
     private:
-        GlobalState globalState;
         bool l1;
         bool l2;
         int l3;

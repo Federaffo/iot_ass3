@@ -2,17 +2,12 @@
 #define __LED__
 
 #include "string.h"
+#include "Arduino.h"
 
 class Led{
     public:
-        Led(int pin){
-            this->pin=pin;
-            state=OFF;
-        }
-        Led(String pin){
-            this.analPin;
-            state=OFF;
-        }
+        Led(int pin);
+        Led(unsigned char pin);
         bool isOn();
         void init();
         void turnOn();
@@ -21,7 +16,7 @@ class Led{
     
     private:
         int pin;
-        String analPin;
+        unsigned char analPin;
         enum {OFF, ON, DIMMER} state;
 };
 

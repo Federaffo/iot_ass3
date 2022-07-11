@@ -1,13 +1,22 @@
 #include "Led.h"
-#include "Arduino.h"
+
+
+Led::Led(int pin){
+    this->pin=pin;
+    state=OFF;
+}
+ Led::Led(unsigned char pin){
+    this->analPin=pin;
+    state=OFF;
+}
 
 bool Led::isOn(){
     return this->state;
 }
 
 void Led::init(){
-    if(pin==null){
-        pinMode(this->analPing,OUTPUT);
+    if(pin==NULL){
+        pinMode(this->analPin,OUTPUT);
     }else{
         pinMode(this->pin,OUTPUT);
     }

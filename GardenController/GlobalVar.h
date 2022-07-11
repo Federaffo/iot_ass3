@@ -5,11 +5,11 @@
 
 #define PINLED1 2
 #define PINLED2 3
-#define PINLED3 "A1"
-#define PINLED4 "A2"
+#define PINLED3 4
+#define PINLED4 5
 #define PINMOTOR 6
-#define PIN_BT_RX 4
-#define PIN_BT_TX 5
+#define PIN_BT_RX 3
+#define PIN_BT_TX 2
 
 enum GlobalState{
     AUTO,
