@@ -23,10 +23,7 @@ class BluetoothTask : public Task{
     private:
         SoftwareSerial* BTSerial;
         StaticJsonDocument<200> doc;
-        StaticJsonDocument<200> ses;
-
         void BTread();
-        void BTwrite();
 };
 
 #endif
