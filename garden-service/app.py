@@ -46,7 +46,7 @@ class sender():
 
 class myGarden():
     def __init__(self) -> None:
-        self.dict = {'l1':False,'l2':False,'l3':0,'l4':0,'i':False,'state':0}
+        self.dict = {'l1':True,'l2':True,'l3':1,'l4':4,'i':False,'state':0}
         self.canIrr = True
 
     def setIrr(self, ir):
@@ -139,6 +139,7 @@ if __name__ == "__main__":
     threading.Thread(target=lambda: app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)).start()
     garden = myGarden()
     s = sender(9600, "COM3")
+
     threading.Timer(3.0, send).start()
 
 

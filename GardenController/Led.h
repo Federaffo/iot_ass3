@@ -7,7 +7,6 @@
 class Led{
     public:
         Led(int pin);
-        Led(unsigned char pin);
         bool isOn();
         void init();
         void turnOn();
@@ -16,7 +15,6 @@ class Led{
     
     private:
         int pin;
-        unsigned char analPin;
         enum {OFF, ON, DIMMER} state;
 };
 
