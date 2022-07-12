@@ -10,6 +10,8 @@ from numpy import tri, true_divide
 import serial
 from datetime import date, datetime,timedelta
 import time, threading
+from threading import Thread
+
 
 
 class State(Enum):
@@ -63,7 +65,7 @@ class myGarden():
     def stopIrr(self):
         self.setIrr(False)
         self.canIrr = False
-        threading.Timer(ir_X, self.nowCanIrr).start()
+        threading.Timer(ir_Y, self.nowCanIrr).start()
 
     def nowCanIrr(self):
         self.canIrr = True
@@ -100,9 +102,6 @@ class myGarden():
 
 
 
-garden = myGarden()
-s = sender(9600, "COM4")
-
 def getStateDict():
     return {"state":state.value}
 
@@ -130,12 +129,17 @@ def reset():
 @app.route("/send")
 def send():
     s.send(garden.getGarden())
-    s.send("ciao")
+    #s.send("ciao")
+    threading.Timer(5.0, send).start()
 
     return "OK"
     
-def sendAlarmMessage():
-    print("ALLARMEEEEEE ROSSOOOO")
+
+if __name__ == "__main__":
+    threading.Thread(target=lambda: app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)).start()
+    garden = myGarden()
+    s = sender(9600, "COM4")
+    threading.Timer(3.0, send).start()
 
 
 # %%
