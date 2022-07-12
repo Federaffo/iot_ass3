@@ -117,8 +117,8 @@ def sendState():
     lux = int(request.args.get('lum'))
     garden.sync(tmp,lux)
     #useValue(lux, tmp)
-    return json.dumps(garden.getGarden(), indent=4)
-
+    #return json.dumps(garden.getGarden(), indent=4)
+    return str(garden.getGarden()["state"])
 
 @app.route("/resetAlarm")
 def reset():
@@ -138,7 +138,7 @@ def send():
 if __name__ == "__main__":
     threading.Thread(target=lambda: app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)).start()
     garden = myGarden()
-    s = sender(9600, "COM4")
+    s = sender(9600, "COM3")
     threading.Timer(3.0, send).start()
 
 

@@ -1,10 +1,10 @@
 #include "sensor.h"
 #include "Arduino.h"
 
-Sensor::Sensor()
+Sensor::Sensor(int pin)
 {
-    this->value = 10;
-    this->init();
+    this->pin = pin;
+    this->init(pin);
 }
 
 int Sensor::getValue()
@@ -13,7 +13,7 @@ int Sensor::getValue()
 }
 void Sensor::sync()
 {
-    this->value  = analogRead(A0);
+    this->value  = analogRead(this->pin);
    
 }
 
@@ -21,7 +21,7 @@ int Sensor::getMappedValue(int a, int b){
   return  map(this->value, 0, 1023, a, b);
 }
 
-void Sensor::init()
+void Sensor::init(int pin)
 {
-    pinMode(A0, INPUT);
+    pinMode(pin, INPUT);
 }

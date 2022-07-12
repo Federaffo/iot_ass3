@@ -4,10 +4,10 @@
 class Sensor
 {
 public:
-    Sensor();
+    Sensor(int pin);
     int getValue();
     void sync();
-    void init();
+    void init(int pin);
     int getMappedValue(int a,int b);
 
 private:
