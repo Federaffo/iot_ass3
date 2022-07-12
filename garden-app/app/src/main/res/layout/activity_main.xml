@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Smart Garden"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light System"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:dividerColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Led 1"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_led1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ON/OFF" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Led 2"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_led2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ON/OFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Led 3"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_led3up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/txt_led3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_led3down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Led 4"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_led4up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/txt_led4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_led4down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Irrigation System"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:dividerColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_irr"
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:text="Open/Close" />
+
+        <Button
+            android:id="@+id/btn_irrdown"
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/txt_irr"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btn_irrup"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_rmc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Require Manual Control"
+        android:textAlignment="center" />
+
+
+
+</LinearLayout>
