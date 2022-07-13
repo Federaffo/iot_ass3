@@ -1,7 +1,7 @@
 #ifndef STASSID
 
-#define STASSID "Vodafone-Raffo"
-#define STAPSK  "JpTCKaYdGFdPArfh"
+#define STASSID "Telecom-24092253"
+#define STAPSK  "TzKFTj6IdLYRz27RXoleFU0U"
 
 
 #endif

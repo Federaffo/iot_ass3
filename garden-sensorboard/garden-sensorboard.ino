@@ -1,7 +1,5 @@
-
-
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
 //#include <ArduinoHttpClient.h>
 #include "Led.h"
 #include "sensor.h"
@@ -14,9 +12,9 @@
 const char* ssid     = STASSID;
 const char* password = STAPSK;
 
-Sensor* lux = new Sensor(A0);
-Sensor* temp = new Sensor(A0);
-Led* l1 = new Led(2);
+Sensor* lux = new Sensor(2);
+Sensor* temp = new Sensor(1);
+Led* l1 = new Led(3);
 WiFiClient client;
 
 void SetupWifi(){
@@ -41,14 +39,16 @@ void syncAll(){
 }
 
 void loop() {  // wait for WiFi connection
-
+    syncAll();
     int lum = lux->getMappedValue(0,8);
-    int t = temp->getMappedValue(0,5);
+    int t = temp->getValue();
+    t = map(t,0,470,0,5);
+    
 
   if(WiFi.status()== WL_CONNECTED){
-    String altLink = "http://192.168.1.6:80/sensorState?";
+    String altLink = "http://192.168.1.106:80/sensorState?";
     altLink.concat("tmp=");
-    altLink.concat(5);
+    altLink.concat(t);
     altLink.concat("&lum=");
     altLink.concat(lum);
     

@@ -18,7 +18,7 @@ void Sensor::sync()
 }
 
 int Sensor::getMappedValue(int a, int b){
-  return  map(this->value, 0, 1023, a, b);
+  return  map(this->value, 0, 4095, a, b);
 }
 
 void Sensor::init(int pin)
