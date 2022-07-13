@@ -36,7 +36,7 @@ void setup() {
   Task* t0 = new MainSystemTask(L1,L2,L3,L4,motor);
   sched.addTask(t0);
 
-  Task* t2= new BluetoothTask(PIN_BT_TX, PIN_BT_RX);
+  Task* t2= new BluetoothTask(PIN_BT_RX, PIN_BT_TX);
   sched.addTask(t2);
 
   Task* t1 = new SerialCommTask();

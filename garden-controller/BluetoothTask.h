@@ -24,6 +24,7 @@ class BluetoothTask : public Task{
         SoftwareSerial* BTSerial;
         StaticJsonDocument<200> doc;
         void BTread();
+        void BTawaitAlarm();
 };
 
 #endif

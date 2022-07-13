@@ -2,8 +2,8 @@
 #include "GlobalVar.h"
 
 void SerialCommTask::tick(){
-        ReadData();
     if(globalState==AUTO){
+        ReadData();
     }
 }
 
