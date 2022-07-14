@@ -5,9 +5,9 @@
 
 #define PINLED1 13
 #define PINLED2 12
-#define PINLED3 11
-#define PINLED4 6
-#define PINMOTOR 5
+#define PINLED3 6
+#define PINLED4 5
+#define PINMOTOR 9
 #define PIN_BT_RX 3
 #define PIN_BT_TX 2
 

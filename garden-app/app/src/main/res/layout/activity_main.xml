@@ -182,6 +182,11 @@
         android:text="Require Manual Control"
         android:textAlignment="center" />
 
+    <TextView
+        android:id="@+id/debugText"
+        android:layout_width="match_parent"
+        android:layout_height="333dp" />
+
 
 
 </LinearLayout>

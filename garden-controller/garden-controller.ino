@@ -31,7 +31,6 @@ void setup() {
   
   sched.init(50);
   Serial.begin(9600);
-  
 
   Task* t0 = new MainSystemTask(L1,L2,L3,L4,motor);
   sched.addTask(t0);
@@ -41,12 +40,8 @@ void setup() {
 
   Task* t1 = new SerialCommTask();
   sched.addTask(t1);
-
-  
 }
 
 void loop() {
   sched.schedule();
-
-  
 }
