@@ -3,14 +3,17 @@
 void BluetoothTask::tick(){
     switch (globalState)
     {
-    case MANUAL:
-            BTread();
-        break;
-    case ALARM:
-            BTawaitAlarm();
-        break;
-    default:
-        break;
+      case AUTO:
+            BTmanualControl();
+          break;
+      case MANUAL:
+              BTread();
+          break;
+      case ALARM:
+              BTawaitAlarm();
+          break;
+      default:
+          break;
     }
 }
 
@@ -25,7 +28,17 @@ void BluetoothTask::BTread(){
       l4 = doc["l4"];
       globalState = doc["state"];
       irrigation = doc["i"];
-      /*irrSpeed = doc["irrSpeed"];*/
+      irrSpeed = doc["is"];
+    }
+}
+
+void BluetoothTask::BTmanualControl(){
+  if(BTSerial->available()){
+      char c = BTSerial->read();
+      if(c=='m'){
+        globalState=MANUAL;
+        Serial.println("manuale");
+      }
     }
 }
 

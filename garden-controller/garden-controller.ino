@@ -15,12 +15,13 @@ Led* L4= new Led(PINLED4);
 StepMotor* motor = new StepMotor(PINMOTOR);
 
 Scheduler sched;
-GlobalState globalState=MANUAL;
+GlobalState globalState=AUTO;
 bool l1;
 bool l2;
 int l3;
 int l4;
 bool irrigation;
+int irrSpeed;
 
 void setup() {
   L1->init();

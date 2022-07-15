@@ -23,6 +23,7 @@ extern bool l2;
 extern int l3;
 extern int l4;
 extern bool irrigation;
+extern int irrSpeed;
 
 
 #endif

@@ -25,6 +25,7 @@ class BluetoothTask : public Task{
         StaticJsonDocument<200> doc;
         void BTread();
         void BTawaitAlarm();
+        void BTmanualControl();
 };
 
 #endif

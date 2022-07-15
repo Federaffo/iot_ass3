@@ -25,7 +25,7 @@ void MainSystemTask::doingStuff(){
     if(l2){L2->turnOn();}else{L2->turnOff();}
     L3->dimmerLed(l3);
     L4->dimmerLed(l4);
-    if(irrigation){motor->keepRotate(1);}
+    if(irrigation){motor->keepRotate(irrSpeed);}
     delay(100);
 }
 

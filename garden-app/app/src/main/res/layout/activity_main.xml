@@ -7,24 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Smart Garden"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart Garden"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="15dp"/>
+
+        <ImageButton
+            android:id="@+id/btn_bt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_bluetooth_searching_24"
+            android:layout_margin="10dp"
+            />
+
+
+        <ImageButton
+            android:id="@+id/btn_alarm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_twotone_notifications"
+            />
+
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Light System"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp" />
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginHorizontal="15dp"
         app:dividerColor="@color/black" />
 
     <LinearLayout
@@ -35,7 +61,10 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,7 +76,8 @@
                 android:id="@+id/btn_led1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ON/OFF" />
+                android:text="ON/OFF"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +96,10 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -78,14 +111,16 @@
                 android:id="@+id/btn_led3up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+" />
+                android:text="+"
+                />
 
             <TextView
                 android:id="@+id/txt_led3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:layout_marginVertical="5dp"/>
 
             <Button
                 android:id="@+id/btn_led3down"
@@ -97,7 +132,10 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -115,8 +153,9 @@
                 android:id="@+id/txt_led4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2"
-                android:textAlignment="center" />
+                android:text="0"
+                android:textAlignment="center"
+                android:layout_marginVertical="5dp"/>
 
             <Button
                 android:id="@+id/btn_led4down"
@@ -133,13 +172,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Irrigation System"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp" />
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:dividerColor="@color/black" />
+        android:layout_marginHorizontal="15dp"
+        app:dividerColor="@color/black"
+        android:layout_marginBottom="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -148,26 +188,28 @@
 
         <Button
             android:id="@+id/btn_irr"
-            android:layout_width="164dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open/Close" />
+            android:text="Open/Close"
+            android:layout_marginHorizontal="30dp"/>
 
         <Button
             android:id="@+id/btn_irrdown"
-            android:layout_width="66dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="-" />
 
         <TextView
             android:id="@+id/txt_irr"
-            android:layout_width="65dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
-            android:textAlignment="center" />
+            android:text="0"
+            android:textAlignment="center"
+            android:layout_marginHorizontal="30dp"/>
 
         <Button
             android:id="@+id/btn_irrup"
-            android:layout_width="62dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="+" />
 
@@ -176,17 +218,12 @@
 
     <Button
         android:id="@+id/btn_rmc"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginHorizontal="45dp"
+        android:layout_marginTop="100dp"
         android:text="Require Manual Control"
         android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/debugText"
-        android:layout_width="match_parent"
-        android:layout_height="333dp" />
-
 
 
 </LinearLayout>
