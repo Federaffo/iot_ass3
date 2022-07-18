@@ -8,14 +8,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Garden Dashboard</title>
 </head>
-<body>
-    <h1>Garder Dashboard</h1>
-    <input type="submit" value="Get Data">
+<body style="background-color: black;">
+    <div class="d-flex justify-content-evenly p-5">
 
-    <p>Luce <span id="lux"></span></p>
-    <p>Temperatura <span id="temp"></span></p>
-    <p>Lampadina 1 <span id="l1"></span></p>
-    <p>Lampadina 3 <span id="l3"></span></p>
+        <h1 class="text-white fs-1 fw-bold"> My Garden Dashboard</h1>
+        <input type="submit" value="Click here to get Data" class="rounded-3 btn btn-secondary">
+    </div>
+
+    
+
+    <div class="container rounded-3 bg-warning bg-opacity-75 bg-gradient d-flex text-nowrap align-items-center my-3">
+        <p class="text-white fs-2 pe-2">Sensor Statistics </p>
+        <div class="container-fluid bg-white bg-opacity-25 my-3 mx-1 rounded-3">
+            <p class="fs-5 ps-3 py-2">◽ Temperature 🌡  :<span id="temp"></span></p>
+            <p class="fs-5 ps-3 py-2">◽ Brightness ☀  : <span id="lux"></span></p>
+        </div>
+    </div>
+
+    <div class="container rounded-3 bg-info bg-opacity-75 bg-gradient d-flex text-nowrap align-items-center my-3">
+        <div class="container-fluid" style="max-width:250px ;">
+            <p class="text-white fs-2 pe-2">Controller State </p>
+            <p class="text-center border border-3 rounded-pill fs-3 " id="state">AUTO</p>
+
+        </div>
+        <div class="container-fluid bg-white bg-opacity-25 my-3 mx-1 rounded-3 ">
+            <p class="fs-5 ps-3 py-2">◽1° Light Bulb 💡  :<span id="l1"></span></p>
+            <p class="fs-5 ps-3 py-2">◽2° Light Bulb 💡  :<span id="l2"></span></p>
+            <p class="fs-5 ps-3 py-2">◽3° Light Bulb 💡  :<span id="l3"></span></p>
+            <p class="fs-5 ps-3 py-2">◽4° Light Bulb 💡  :<span id="l4"></span></p>
+            <p class="fs-5 ps-3 py-2">◽Irrigation System 💦  :<span id="ir"></span></p>
+        </div>
+    </div>
     
     
     <script src="script.js"></script>

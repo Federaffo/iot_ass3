@@ -133,6 +133,11 @@ def send():
     threading.Timer(5.0, send).start()
 
     return "OK"
+
+@app.route("/dashboard",methods=["GET","POST"])
+def sendWeb():
+
+    return garden.getGarden()
     
 
 if __name__ == "__main__":
