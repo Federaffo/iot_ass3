@@ -28,7 +28,7 @@ void SetupWifi(){
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   SetupWifi();
   delay(500);
 }
@@ -52,11 +52,11 @@ void loop() {  // wait for WiFi connection
     altLink.concat("&lum=");
     altLink.concat(lum);
     
-
     HTTPClient http;
     http.begin(client, altLink);
     //http.addHeader("Content-Type", "text/plain");
     int httpCode = http.GET();
+    Serial.println(httpCode);
 
     if (httpCode == 200){
       String response = http.getString();
