@@ -4,12 +4,13 @@ from mimetypes import init
 from this import d
 from tkinter.tix import Tree
 from flask import Flask
-from flask import request
+from flask import request, jsonify, Response
 from enum import Enum
 from numpy import tri, true_divide
 import serial
 from datetime import date, datetime,timedelta
 import time, threading
+from flask_cors import CORS
 from threading import Thread
 
 
@@ -21,6 +22,7 @@ class State(Enum):
     
 state = State.AUTO
 app = Flask(__name__)
+CORS(app)
 
 ir_X = 10
 ir_Y = 10
@@ -46,7 +48,7 @@ class sender():
 
 class myGarden():
     def __init__(self) -> None:
-        self.dict = {'l1':True,'l2':True,'l3':1,'l4':4,'i':False,'state':0}
+        self.dict = {'l1':True,'l2':True,'l3':1,'l4':4,'i':False,'state':0,'lux':0,'tmp':0}
         self.canIrr = True
 
     def setIrr(self, ir):
@@ -77,6 +79,8 @@ class myGarden():
     def sync(self,temp,lux):
         global state
 
+        self.dict["lux"]=lux
+        self.dict["tmp"]=temp
 
         if state == State.AUTO:
             if(temp == 5):
@@ -138,6 +142,7 @@ def send():
 def sendWeb():
 
     return garden.getGarden()
+
     
 
 if __name__ == "__main__":
