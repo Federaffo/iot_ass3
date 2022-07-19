@@ -27,6 +27,10 @@ void SetupWifi(){
 }
 
 
+unsigned long lastTime = 0;
+unsigned long timerDelay = 5000;
+
+
 void setup() {
   Serial.begin(115200);
   SetupWifi();
@@ -39,10 +43,11 @@ void syncAll(){
 }
 
 void loop() {  // wait for WiFi connection
+  if ((millis() - lastTime) > timerDelay) {
     syncAll();
-    int lum = lux->getMappedValue(0,8);
+    int lum = lux->getMappedValue(1,8);
     int t = temp->getValue();
-    t = map(t,0,470,0,5);
+    t = map(t,0,470,1,5);
     
 
   if(WiFi.status()== WL_CONNECTED){
@@ -69,5 +74,8 @@ void loop() {  // wait for WiFi connection
       }
     }
     http.end();
+  }
+  
+    lastTime = millis();
   }
 }

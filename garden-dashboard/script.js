@@ -10,8 +10,8 @@ $(document).ready(function(){
     })
       .done(function( data ) {
         console.log(data);
-        $("#lux").html(data.lux+" lux");
-        $("#temp").html(data.tmp+" °C");
+        $("#lux").html(data.lux);
+        $("#temp").html(data.tmp);
         $("#l1").html(data.l1=="true"?"ON":"OFF");
         $("#l2").html(data.l2=="true"?"ON":"OFF");
         $("#l3").html("(Intensity="+data.l3+")");
@@ -40,8 +40,8 @@ $(document).ready(function(){
   })
     .done(function( data ) {
       console.log(data);
-      $("#lux").html(data.lux+" lux");
-      $("#temp").html(data.tmp+" °C");
+      $("#lux").html(data.lux);
+      $("#temp").html(data.tmp);
       $("#l1").html(data.l1=="true"?"ON":"OFF");
       $("#l2").html(data.l2=="true"?"ON":"OFF");
       $("#l3").html("(Intensity="+data.l3+")");
