@@ -3,6 +3,7 @@ import json
 from mimetypes import init
 from this import d
 from tkinter.tix import Tree
+from turtle import delay
 from flask import Flask
 from flask import request, jsonify, Response
 from enum import Enum
@@ -44,6 +45,9 @@ class sender():
         a = a.lower()
         self.ser.write(str.encode(a))
         #self.ser.close()  
+
+    def read(self):
+        return self.ser.readline()
         
 
 class myGarden():
@@ -104,6 +108,25 @@ class myGarden():
     def getGarden(self):
         return self.dict
 
+    def changeState(self,i):
+        self.dict["state"]=i
+        state=i
+        self.setAllOff()
+    
+    def changeAll(self,myJson):
+        self.dict = myJson
+
+
+def readFromArduino():
+    while True :
+        data=s.read().decode("utf-8")
+        print(data)
+        a = json.loads(data)
+        garden.changeAll(a)
+
+        
+    
+    
 
 
 def getStateDict():
@@ -149,8 +172,9 @@ if __name__ == "__main__":
     threading.Thread(target=lambda: app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)).start()
     garden = myGarden()
     s = sender(9600, "COM6")
-
     threading.Timer(3.0, send).start()
+    t=Thread(target=readFromArduino,args=[])
+    t.start()
 
 
 # %%

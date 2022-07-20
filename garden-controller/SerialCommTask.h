@@ -20,7 +20,7 @@ class SerialCommTask : public Task{
     
     private:
         StaticJsonDocument<200> doc;
-
+        void WriteData();
         void ReadData();
 };
 

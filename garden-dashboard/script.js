@@ -42,11 +42,11 @@ $(document).ready(function(){
       console.log(data);
       $("#lux").html(data.lux);
       $("#temp").html(data.tmp);
-      $("#l1").html(data.l1=="true"?"ON":"OFF");
-      $("#l2").html(data.l2=="true"?"ON":"OFF");
+      $("#l1").html(data.l1==true?"ON":"OFF");
+      $("#l2").html(data.l2==true?"ON":"OFF");
       $("#l3").html("(Intensity="+data.l3+")");
       $("#l4").html("(Intensity="+data.l4+")");
-      $("#ir").html(data.i=="true"?"ACTIVATED":"PAUSED");
+      $("#ir").html(data.i==true?"ACTIVATED":"PAUSED");
       switch(data.state){
         case 0:
           $("#state").html("AUTO").addClass("border-success");
