@@ -3,9 +3,9 @@
 
 void SerialCommTask::tick(){
     WriteData();
-    if(globalState==AUTO){
-        ReadData();
-    }
+  if(globalState==AUTO){
+      ReadData();
+  }
 }
 
 void SerialCommTask::ReadData(){

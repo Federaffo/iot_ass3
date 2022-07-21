@@ -20,7 +20,6 @@ void BluetoothTask::tick(){
 void BluetoothTask::BTread(){
     if(BTSerial->available()){
       String comm=BTSerial->readString();
-      Serial.println(comm);
       deserializeJson(doc,comm);
       l1 = doc["l1"];
       l2 = doc["l2"];

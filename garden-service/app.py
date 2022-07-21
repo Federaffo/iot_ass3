@@ -122,7 +122,11 @@ def readFromArduino():
         data=s.read().decode("utf-8")
         print(data)
         a = json.loads(data)
-        garden.changeAll(a)
+        if garden.getGarden()["state"]!=2 or (garden.getGarden()["state"]!=2 and a["state"]==0):
+            garden.changeAll(a)
+
+
+
 
         
     
