@@ -35,19 +35,20 @@ void BluetoothTask::BTmanualControl(){
   if(BTSerial->available()){
       char c = BTSerial->read();
       if(c=='m'){
-        globalState=MANUAL;
+        globalState=1;
         l1=false;
         l2=false;
         l3=0;
         l4=0;
         irrigation=false;
         irrSpeed=1;
+        Serial.println("manualControl");
       }
     }
 }
 
 void BluetoothTask::BTawaitAlarm(){
-    if(BTSerial->available()){
+  if(BTSerial->available()){
       char c = BTSerial->read();
       if(c=='a'){
         globalState=AUTO;
@@ -57,6 +58,7 @@ void BluetoothTask::BTawaitAlarm(){
         l4=0;
         irrigation=false;
         irrSpeed=1;
+        Serial.println("exitAlarm");
       }
-    }
+  }
 }

@@ -121,16 +121,17 @@ def readFromArduino():
     while True :
         data=s.read().decode("utf-8")
         print(data)
-        a = json.loads(data)
-        if garden.getGarden()["state"]!=2 or (garden.getGarden()["state"]!=2 and a["state"]==0):
+        if "exitAlarm" in data:
+            garden.setAllOff()
+            state = 0
+            garden.dict["state"] = 0
+        elif "manualControl" in data:
+            garden.setAllOff()
+            state = 1
+            garden.dict["state"] = 1
+        else:
+            a = json.loads(data)
             garden.changeAll(a)
-
-
-
-
-        
-    
-    
 
 
 def getStateDict():
@@ -147,6 +148,7 @@ def sendState():
     tmp =int(request.args.get('tmp'))
     lux = int(request.args.get('lum'))
     garden.sync(tmp,lux)
+    s.send(garden.getGarden())
     #useValue(lux, tmp)
     #return json.dumps(garden.getGarden(), indent=4)
     return str(garden.getGarden()["state"])

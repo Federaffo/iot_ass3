@@ -10,7 +10,7 @@
 class SerialCommTask : public Task{
     public:
         SerialCommTask(){
-          init(200);
+          init(500);
         }
         void init(long period){
             Task::init(period);
@@ -22,6 +22,7 @@ class SerialCommTask : public Task{
         StaticJsonDocument<200> doc;
         void WriteData();
         void ReadData();
+        void AlarmMethod();
 };
 
 #endif

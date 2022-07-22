@@ -153,9 +153,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     tmpOut = btSocket.getOutputStream();
-                    String str= "a";;
+                    String str= "a";
                     byte[] b = str.getBytes(StandardCharsets.UTF_8);
                     tmpOut.write(b);
+                    SendToArduino();
                     ToastFactory.createPositiveToast(thisActivity,"Modalità manuale", "Il sistema è ora in modalità manuale").show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -205,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                     String str= "m";;
                     byte[] b = str.getBytes(StandardCharsets.UTF_8);
                     tmpOut.write(b);
+                    SendToArduino();
                     ToastFactory.createPositiveToast(thisActivity,"Allarme", "l'allarme è stato disattivato").show();
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -25,5 +25,4 @@ extern int l4;
 extern bool irrigation;
 extern int irrSpeed;
 
-
 #endif

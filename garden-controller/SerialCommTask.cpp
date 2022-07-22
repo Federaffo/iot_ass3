@@ -2,9 +2,14 @@
 #include "GlobalVar.h"
 
 void SerialCommTask::tick(){
-    WriteData();
-  if(globalState==AUTO){
+
+  switch(globalState){
+    case 0:
       ReadData();
+      break;
+    case 1:
+      WriteData();
+      break;
   }
 }
 
