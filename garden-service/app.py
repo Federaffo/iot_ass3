@@ -121,7 +121,11 @@ def readFromArduino():
     while True :
         data=s.read().decode("utf-8")
         print(data)
-        if "exitAlarm" in data:
+        if "exitAlarm" in data :
+            garden.setAllOff()
+            state = 0
+            garden.dict["state"] = 0
+        elif "restoreAuto" in data:
             garden.setAllOff()
             state = 0
             garden.dict["state"] = 0

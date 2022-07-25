@@ -19,8 +19,13 @@ void BluetoothTask::tick(){
 
 void BluetoothTask::BTread(){
     if(BTSerial->available()){
-      String comm=BTSerial->readString();
-      deserializeJson(doc,comm);
+      String c=BTSerial->readString();
+      if(c.indexOf('x')!=-1){ /*restore auto*/
+        Serial.println("restoreAuto");
+        globalState=0;
+        return;
+      }
+      deserializeJson(doc,c);
       l1 = doc["l1"];
       l2 = doc["l2"];
       l3 = doc["l3"];
@@ -28,6 +33,7 @@ void BluetoothTask::BTread(){
       globalState = doc["state"];
       irrigation = doc["i"];
       irrSpeed = doc["is"];
+      
     }
 }
 

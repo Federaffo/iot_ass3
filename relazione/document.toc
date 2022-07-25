@@ -1,0 +1,6 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {chapter}{\numberline {1}Descrizione del Sistema}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Breve Descrizione FSM utilizzata}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Breadboard Schema}{4}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Video}{5}{chapter.4}%

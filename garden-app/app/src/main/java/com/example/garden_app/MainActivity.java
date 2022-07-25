@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private int arduinoState=1;
     private boolean irrigation=false;
     private int irrSpeed=1;
+    private boolean manualControl=false;
 
     private Activity thisActivity=null;
 
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnLed3down= findViewById(R.id.btn_led3down);
         Button btnLed4up= findViewById(R.id.btn_led4up);
         Button btnLed4down= findViewById(R.id.btn_led4down);
-        TextView txtLed3=findViewById(R.id.txt_led3);
-        TextView txtLed4 = findViewById(R.id.txt_led4);
+        TextView txtLed3= (TextView)findViewById(R.id.txt_led3);
+        TextView txtLed4 = (TextView)findViewById(R.id.txt_led4);
 
         ImageButton btnBT = findViewById(R.id.btn_bt);
         ImageButton btnAlarm = findViewById(R.id.btn_alarm);
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(l3<4){
                     l3++;
-                    //txtLed3.setText(l3);
+                    txtLed3.setText(Integer.toString(l3));
                     SendToArduino();
                 }
             }
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(l3>0){
                     l3--;
-                    //txtLed3.setText(l3);
+                    txtLed3.setText(Integer.toString(l3));
                     SendToArduino();
                 }
             }
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(l4<4){
                     l4++;
-                    txtLed4.setText(l4);
+                    txtLed4.setText(Integer.toString(l4));
                     SendToArduino();
                 }
             }
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(l4>0){
                     l4--;
-                    txtLed4.setText(l4);
+                    txtLed4.setText(Integer.toString(l4));
                     SendToArduino();
                 }
             }
@@ -157,10 +158,10 @@ public class MainActivity extends AppCompatActivity {
                     byte[] b = str.getBytes(StandardCharsets.UTF_8);
                     tmpOut.write(b);
                     SendToArduino();
-                    ToastFactory.createPositiveToast(thisActivity,"Modalità manuale", "Il sistema è ora in modalità manuale").show();
+                    ToastFactory.createPositiveToast(thisActivity,"Allarme", "l'allarme è stato disattivato").show();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    ToastFactory.createNegativeToast(thisActivity,"Modalità manuale", "errore").show();
+                    ToastFactory.createNegativeToast(thisActivity,"Allarme", "l'allarme non è stato disattivato").show();
                 }
 
             }
@@ -181,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(irrSpeed<5){
                     irrSpeed++;
-                    //txtIrr.setText(irrSpeed);
+                    txtIrr.setText(Integer.toString(irrSpeed));
                     SendToArduino();
                 }
             }
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(irrSpeed>1){
                     irrSpeed--;
-                    txtIrr.setText(irrSpeed);
+                    txtIrr.setText(Integer.toString(irrSpeed));
                     SendToArduino();
                 }
             }
@@ -201,16 +202,24 @@ public class MainActivity extends AppCompatActivity {
         btnManual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                manualControl=!manualControl;
+                String str;
+                if(manualControl){
+                    str= "m";
+                    ToastFactory.createPositiveToast(thisActivity,"Modalità manuale", "Il sistema è ora in modalità manuale").show();
+                }
+                else{
+                    str="x";
+                    ToastFactory.createPositiveToast(thisActivity,"Modalità manuale disattivata", "Il sistema è ora in modalità auto").show();
+                }
                 try {
                     tmpOut = btSocket.getOutputStream();
-                    String str= "m";;
                     byte[] b = str.getBytes(StandardCharsets.UTF_8);
                     tmpOut.write(b);
                     SendToArduino();
-                    ToastFactory.createPositiveToast(thisActivity,"Allarme", "l'allarme è stato disattivato").show();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    ToastFactory.createNegativeToast(thisActivity,"Allarme", "l'allarme non è stato disattivato").show();
+                    ToastFactory.createNegativeToast(thisActivity,"Modalità manuale", "errore").show();
                 }
             }
         });
