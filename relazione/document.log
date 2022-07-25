@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 JUL 2022 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  25 JUL 2022 12:59
 entering extended mode
 **./document.tex
 (document.tex
@@ -421,14 +421,14 @@ Here is how much of TeX's memory you used:
  28861 multiletter control sequences out of 15000+200000
  406537 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,7n,74p,560b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 71i,7n,74p,495b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmr12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmr17.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on document.pdf (6 pages, 399889 bytes).
+Output written on document.pdf (6 pages, 399842 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  12 named destinations out of 1000 (max. 500000)
